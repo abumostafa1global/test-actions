@@ -1,0 +1,10 @@
+name: Workflow Caller
+
+on:
+  workflow_dispatch
+
+jobs:
+    some-job:
+        uses: ./.github/workflows/test.yml
+        with:
+            ENVIRONMENT: staging

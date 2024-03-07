@@ -11,4 +11,4 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting Today is $DAY_OF_WEEK!"
+        run: echo "$Greeting Today is ${{vars.DAY_OF_WEEK}}!"

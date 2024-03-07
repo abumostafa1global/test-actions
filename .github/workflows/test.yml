@@ -1,14 +1,15 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on:
-  workflow_dispatch
+name: Reusable Workflow
 
+on:
+    workflow_call:
+        inputs:
+            ENVIRONMENT:
+                required: true
+                type: string            
 jobs:
-  greeting_job:
-    runs-on: ubuntu-latest
-    environment: staging
-    env:
-      Greeting: Hello
-    steps:
-      - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting Today is ${{vars.DAY_OF_WEEK}}!"
+    some-job:
+        runs-on: ubuntu-latest
+        environment: ${{ inputs.ENVIRONMENT }}
+
+        steps:
+            - run: echo ${{ vars.DAY_OF_WEEK }} 
